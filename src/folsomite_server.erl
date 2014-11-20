@@ -164,7 +164,8 @@ node_prefix() ->
 node_key() ->
     NodeList = atom_to_list(node()),
     Opts = [global, {return, list}],
-    re:replace(NodeList, "[\@\.]", "_", Opts).
+    NodeList1 = re:replace(NodeList, "[\.]", "_", Opts),
+    re:replace(NodeList1, "[\@]", ".", Opts).
 
 
 stringify(X) when is_list(X) -> X;
